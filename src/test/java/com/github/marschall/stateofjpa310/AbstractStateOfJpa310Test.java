@@ -5,6 +5,7 @@ import static java.util.Collections.singletonMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
@@ -20,21 +21,31 @@ import java.time.zone.ZoneOffsetTransition;
 import java.time.zone.ZoneRules;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 import org.assertj.core.api.AssertionsForInterfaceTypes;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
+import org.springframework.orm.jpa.EntityManagerFactoryUtils;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.transaction.support.TransactionOperations;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.github.marschall.stateofjpa310.configuration.TransactionManagerConfiguration;
 
 abstract class AbstractStateOfJpa310Test {
 
   private AnnotationConfigApplicationContext applicationContext;
+  private EntityManagerFactory factory;
+  private TransactionOperations txTemplate;
 
   @BeforeEach
   void setUp() {
@@ -46,21 +57,12 @@ abstract class AbstractStateOfJpa310Test {
     propertySources.addFirst(new MapPropertySource("persistence unit name", source));
     this.applicationContext.refresh();
 
-//    PlatformTransactionManager txManager = this.applicationContext.getBean(PlatformTransactionManager.class);
-//    this.template = new TransactionTemplate(txManager);
-//
-//    this.template.execute(status -> {
-//      Map<String, DatabasePopulator> beans = this.applicationContext.getBeansOfType(DatabasePopulator.class);
-//      DataSource dataSource = this.applicationContext.getBean(DataSource.class);
-//      try (Connection connection = dataSource.getConnection()) {
-//        for (DatabasePopulator populator : beans.values()) {
-//          populator.populate(connection);
-//        }
-//      } catch (SQLException e) {
-//        throw new RuntimeException("could initialize database", e);
-//      }
-//      return null;
-//    });
+
+    this.factory = this.applicationContext.getBean(EntityManagerFactory.class);
+    PlatformTransactionManager txManager = this.applicationContext.getBean(PlatformTransactionManager.class);
+    TransactionDefinition transactionDefinition = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+    this.txTemplate = new TransactionTemplate(txManager, transactionDefinition);
+
   }
 
   @AfterEach
@@ -76,26 +78,60 @@ abstract class AbstractStateOfJpa310Test {
   protected abstract String getPersistenceUnitName();
 
   @Test
-  @Disabled
-  void stateOfJpaJsr310Support() {
+  void stateOfJpaJsr310SupportLocalDateTime() {
 
     JpaSupport originalEntity = this.newEntity();
-    this.storeEntity(originalEntity);
+    this.persistEntity(originalEntity);
     JpaSupport readBack = this.readEntity(originalEntity.getId());
 
+    assertNotSame(originalEntity, readBack);
+
+    assertNotSame(originalEntity.getLocalDateTime(), readBack.getLocalDateTime());
     assertEquals(originalEntity.getLocalDateTime(), readBack.getLocalDateTime(), "LocalDateTime");
-    assertEquals(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime(), "LocalDateTime");
+  }
+
+  @Test
+  void stateOfJpaJsr310SupportOffsetDateTime() {
+
+    JpaSupport originalEntity = this.newEntity();
+    this.persistEntity(originalEntity);
+    JpaSupport readBack = this.readEntity(originalEntity.getId());
+
+    assertNotSame(originalEntity, readBack);
+
+    assertNotSame(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime());
+    assertEquals(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime(), "OffsetDateTime");
+  }
+
+  @Test
+  void stateOfJpaJsr310SupportLocalTime() {
+
+    JpaSupport originalEntity = this.newEntity();
+    this.persistEntity(originalEntity);
+    JpaSupport readBack = this.readEntity(originalEntity.getId());
+
+    assertNotSame(originalEntity, readBack);
+
+    assertNotSame(originalEntity.getLocalTime(), readBack.getLocalTime());
     assertEquals(originalEntity.getLocalTime(), readBack.getLocalTime(), "LocalTime");
   }
 
-  private void storeEntity(JpaSupport originalEntity) {
-    // TODO Auto-generated method stub
-
+  private void persistEntity(JpaSupport entity) {
+    this.txTemplate.execute((status) -> {
+      EntityManager entityManager = EntityManagerFactoryUtils.getTransactionalEntityManager(this.factory);
+      entityManager.persist(entity);
+      status.flush();
+      return null;
+    });
   }
 
   private JpaSupport readEntity(Integer id) {
-    // TODO Auto-generated method stub
-    return null;
+    return this.txTemplate.execute((status) ->  {
+      EntityManager entityManager = EntityManagerFactoryUtils.getTransactionalEntityManager(this.factory);
+      JpaSupport entity = entityManager.find(JpaSupport.class, id);
+      assertNotNull(entity);
+      return entity;
+    });
   }
 
   @Test
@@ -129,7 +165,10 @@ abstract class AbstractStateOfJpa310Test {
   }
 
   private LocalTime getCurrentTime() {
-    return LocalTime.now().truncatedTo(this.getTimeResolution());
+    LocalTime now = LocalTime.now();
+    // make sure none of the nano seconds are 0 so that we can detect truncation
+    now = now.withNano(123_456_789);
+    return now.truncatedTo(this.getTimeResolution());
   }
 
   protected OffsetDateTime getCurrentDateTimeInDifferentZone() {

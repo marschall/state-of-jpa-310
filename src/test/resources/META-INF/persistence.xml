@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_2.xsd">
 
   <persistence-unit name="state-of-jpa-310-hibernate-derby">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
@@ -17,6 +19,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
     </properties>
@@ -26,6 +30,8 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
@@ -37,6 +43,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
     </properties>
@@ -46,6 +54,8 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect" />
@@ -57,6 +67,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
     </properties>
@@ -67,6 +79,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
     </properties>
@@ -76,6 +90,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="eclipselink.target-database" value="Derby" />
@@ -89,6 +105,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform" />
       <property name="eclipselink.weaving" value="false" />
@@ -100,6 +118,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="eclipselink.target-database" value="HSQL" />
@@ -113,6 +133,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="eclipselink.target-database" value="PostgreSQL" />
       <property name="eclipselink.weaving" value="false" />
@@ -124,6 +146,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="eclipselink.target-database" value="SQLServer" />
@@ -137,6 +161,8 @@
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
 
+    <shared-cache-mode>NONE</shared-cache-mode>
+
     <properties>
       <property name="eclipselink.target-database" value="MySQL" />
       <property name="eclipselink.weaving" value="false" />
@@ -148,6 +174,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="eclipselink.target-database" value="Oracle" />
