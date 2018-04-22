@@ -1,18 +1,23 @@
 package com.github.marschall.stateofjpa310;
 
 import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
-import com.github.marschall.stateofjpa310.configuration.HsqlConfiguration;
+import com.github.marschall.stateofjpa310.configuration.SqlServerConfiguration;
 
-class HsqlEclipseLinkStateOfJpa310Test2 extends AbstractStateOfJpa310Test {
+class SqlServerEclipseLinkStateOfJpa310Test extends AbstractStateOfJpa310Test {
+
+  @Override
+  protected int getDefaultNanoSecond() {
+    return 123_456_700;
+  }
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-eclipselink-hsql";
+    return "state-of-jpa-310-eclipselink-sqlserver";
   }
 
   @Override
   protected Class<?> getDataSourceConfiguration() {
-    return HsqlConfiguration.class;
+    return SqlServerConfiguration.class;
   }
 
   @Override

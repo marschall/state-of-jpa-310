@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -23,6 +25,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 
 import org.assertj.core.api.AssertionsForInterfaceTypes;
 import org.junit.jupiter.api.AfterEach;
@@ -32,6 +35,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.orm.jpa.EntityManagerFactoryUtils;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -63,6 +67,22 @@ abstract class AbstractStateOfJpa310Test {
     TransactionDefinition transactionDefinition = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
     this.txTemplate = new TransactionTemplate(txManager, transactionDefinition);
 
+    this.runDatabasePopulators();
+  }
+
+  private void runDatabasePopulators() {
+    this.txTemplate.execute(status -> {
+      Map<String, DatabasePopulator> beans = this.applicationContext.getBeansOfType(DatabasePopulator.class);
+      DataSource dataSource = this.applicationContext.getBean(DataSource.class);
+      try (Connection connection = dataSource.getConnection()) {
+        for (DatabasePopulator populator : beans.values()) {
+          populator.populate(connection);
+        }
+      } catch (SQLException e) {
+        throw new RuntimeException("could initialize database", e);
+      }
+      return null;
+    });
   }
 
   @AfterEach
@@ -136,7 +156,7 @@ abstract class AbstractStateOfJpa310Test {
 
   @Test
   void testUnstorableValue() {
-    LocalDateTime originalValue = getUnstorableValue();
+    LocalDateTime originalValue = this.getUnstorableValue();
     java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(originalValue);
     LocalDateTime convertedValue = timestamp.toLocalDateTime();
     assertNotEquals(originalValue, convertedValue);
@@ -158,7 +178,7 @@ abstract class AbstractStateOfJpa310Test {
   private JpaSupport newEntity() {
     JpaSupport entity = new JpaSupport();
     entity.setId(1);
-    entity.setLocalDateTime(getUnstorableValue());
+    entity.setLocalDateTime(this.getUnstorableValue());
     entity.setOffsetDateTime(this.getCurrentDateTimeInDifferentZone());
     entity.setLocalTime(this.getCurrentTime());
     return entity;
@@ -167,13 +187,19 @@ abstract class AbstractStateOfJpa310Test {
   private LocalTime getCurrentTime() {
     LocalTime now = LocalTime.now();
     // make sure none of the nano seconds are 0 so that we can detect truncation
-    now = now.withNano(123_456_789);
+    now = now.withNano(getDefaultNanoSecond());
     return now.truncatedTo(this.getTimeResolution());
+  }
+
+  protected int getDefaultNanoSecond() {
+    return 123_456_789;
   }
 
   protected OffsetDateTime getCurrentDateTimeInDifferentZone() {
     OffsetDateTime now = OffsetDateTime.now();
-    return this.withDifferentOffsetSameInstant(now);
+    // make sure none of the nano seconds are 0 so that we can detect truncation
+    now = now.withNano(123_456_789);
+    return this.withDifferentOffsetSameInstant(now).truncatedTo(this.getTimeResolution());
   }
 
 
@@ -198,15 +224,14 @@ abstract class AbstractStateOfJpa310Test {
   }
 
   protected OffsetDateTime getCurrentDateTimeInUtc() {
-    return OffsetDateTime.now(ZoneOffset.UTC);
+    return OffsetDateTime.now(ZoneOffset.UTC).withNano(123_456_789).truncatedTo(this.getTimeResolution());
   }
 
   protected TemporalUnit getTimeResolution() {
     return ChronoUnit.NANOS;
   }
 
-
-  private static LocalDateTime getUnstorableValue() {
+  private LocalDateTime getUnstorableValue() {
     ZoneId systemTimezone = ZoneId.systemDefault();
     Instant now = Instant.now();
 
@@ -219,7 +244,9 @@ abstract class AbstractStateOfJpa310Test {
     }
 
     Duration gap = Duration.between(transition.getDateTimeBefore(), transition.getDateTimeAfter());
-    return transition.getDateTimeBefore().plus(gap.dividedBy(2L));
+    LocalDateTime unstorable = transition.getDateTimeBefore().plus(gap.dividedBy(2L));
+    // make sure none of the nano seconds are 0 so that we can detect truncation
+    return unstorable.withNano(123_456_789).truncatedTo(this.getTimeResolution());
   }
 
 }
