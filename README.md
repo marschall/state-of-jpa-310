@@ -17,9 +17,4 @@ Accommodations have been made for the following database limitations:
  * MySQL, MariaDB and Derby do not support TIMESTAMP WITH TIME ZONE.
  * SQL Server only supports 100 nanosecond resolution.
 
-
- microsoft.sql.DateTimeOffset
-
-org.h2.api.TimestampWithTimeZone
-
-https://bugs.eclipse.org/bugs/show_bug.cgi?id=533912
+ 
