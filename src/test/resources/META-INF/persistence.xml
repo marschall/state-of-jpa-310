@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
+
+  <persistence-unit name="state-of-jpa-310-hibernate-derby">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-h2">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-hsql">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-postgres">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-sqlserver">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-mysql">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-oracle">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-derby">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="Derby" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-h2">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-hsql">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="HSQL" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-postgres">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="PostgreSQL" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-sqlserver">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="SQLServer" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-mysql">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="MySQL" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-eclipselink-oracle">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaSupport</class>
+
+    <properties>
+      <property name="eclipselink.target-database" value="Oracle" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
+</persistence>
