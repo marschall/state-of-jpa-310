@@ -9,6 +9,8 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
+import com.mysql.cj.log.Slf4JLogger;
+
 @Configuration
 public class MysqlConfiguration {
 
@@ -18,8 +20,8 @@ public class MysqlConfiguration {
     dataSource.setSuppressClose(true);
     String userName = System.getProperty("user.name");
     String database = userName;
-    // https://dev.mysql.com/doc/connector-j/6.0/en/connector-j-reference-configuration-properties.html
-    dataSource.setUrl("jdbc:mysql://localhost:3306/" + database + "?useSSL=false&logger=com.mysql.cj.core.log.Slf4JLogger");
+    // https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html
+    dataSource.setUrl("jdbc:mysql://localhost:3306/" + database + "?useSSL=false&logger=" + Slf4JLogger.class.getName());
     dataSource.setUsername(userName);
     String password = this.isTravis() ? "" : userName;
     dataSource.setPassword(password);

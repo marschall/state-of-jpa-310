@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -100,43 +101,48 @@ abstract class AbstractStateOfJpa310Test {
   @Test
   void stateOfJpaJsr310SupportLocalDateTime() {
 
-    JpaSupport originalEntity = this.newEntity();
+    JpaLocalDateTime originalEntity = this.newJpaLocalDateTime();
     this.persistEntity(originalEntity);
-    JpaSupport readBack = this.readEntity(originalEntity.getId());
+    JpaLocalDateTime readBack = this.readEntity(JpaLocalDateTime.class, originalEntity.getId());
 
     assertNotSame(originalEntity, readBack);
 
-    assertNotSame(originalEntity.getLocalDateTime(), readBack.getLocalDateTime());
+    assertNotSame(originalEntity.getLocalDateTime(), readBack.getLocalDateTime(), "value is from cache");
     assertEquals(originalEntity.getLocalDateTime(), readBack.getLocalDateTime(), "LocalDateTime");
   }
 
   @Test
   void stateOfJpaJsr310SupportOffsetDateTime() {
+    assumeTrue(this.offsetDateTimeSupported());
 
-    JpaSupport originalEntity = this.newEntity();
+    JpaOffsetDateTime originalEntity = this.newJpaOffsetDateTime();
     this.persistEntity(originalEntity);
-    JpaSupport readBack = this.readEntity(originalEntity.getId());
+    JpaOffsetDateTime readBack = this.readEntity(JpaOffsetDateTime.class, originalEntity.getId());
 
     assertNotSame(originalEntity, readBack);
 
-    assertNotSame(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime());
+    assertNotSame(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime(), "value is from cache");
     assertEquals(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime(), "OffsetDateTime");
+  }
+
+  protected boolean offsetDateTimeSupported() {
+    return true;
   }
 
   @Test
   void stateOfJpaJsr310SupportLocalTime() {
 
-    JpaSupport originalEntity = this.newEntity();
+    JpaLocalTime originalEntity = this.newJpaLocalTime();
     this.persistEntity(originalEntity);
-    JpaSupport readBack = this.readEntity(originalEntity.getId());
+    JpaLocalTime readBack = this.readEntity(JpaLocalTime.class, originalEntity.getId());
 
     assertNotSame(originalEntity, readBack);
 
-    assertNotSame(originalEntity.getLocalTime(), readBack.getLocalTime());
+    assertNotSame(originalEntity.getLocalTime(), readBack.getLocalTime(), "value is from cache");
     assertEquals(originalEntity.getLocalTime(), readBack.getLocalTime(), "LocalTime");
   }
 
-  private void persistEntity(JpaSupport entity) {
+  private void persistEntity(Object entity) {
     this.txTemplate.execute((status) -> {
       EntityManager entityManager = EntityManagerFactoryUtils.getTransactionalEntityManager(this.factory);
       entityManager.persist(entity);
@@ -145,10 +151,10 @@ abstract class AbstractStateOfJpa310Test {
     });
   }
 
-  private JpaSupport readEntity(Integer id) {
+  private <T> T readEntity(Class<T> entityClass, Object primaryKey) {
     return this.txTemplate.execute((status) ->  {
       EntityManager entityManager = EntityManagerFactoryUtils.getTransactionalEntityManager(this.factory);
-      JpaSupport entity = entityManager.find(JpaSupport.class, id);
+      T entity = entityManager.find(entityClass, primaryKey);
       assertNotNull(entity);
       return entity;
     });
@@ -175,11 +181,23 @@ abstract class AbstractStateOfJpa310Test {
     assertTrue(ZoneOffset.MIN.compareTo(ZoneOffset.MAX) > 0);
   }
 
-  private JpaSupport newEntity() {
-    JpaSupport entity = new JpaSupport();
+  private JpaOffsetDateTime newJpaOffsetDateTime() {
+    JpaOffsetDateTime entity = new JpaOffsetDateTime();
+    entity.setId(1);
+    entity.setOffsetDateTime(this.getCurrentDateTimeInDifferentZone());
+    return entity;
+  }
+
+  private JpaLocalDateTime newJpaLocalDateTime() {
+    JpaLocalDateTime entity = new JpaLocalDateTime();
     entity.setId(1);
     entity.setLocalDateTime(this.getUnstorableValue());
-    entity.setOffsetDateTime(this.getCurrentDateTimeInDifferentZone());
+    return entity;
+  }
+
+  private JpaLocalTime newJpaLocalTime() {
+    JpaLocalTime entity = new JpaLocalTime();
+    entity.setId(1);
     entity.setLocalTime(this.getCurrentTime());
     return entity;
   }
@@ -187,7 +205,7 @@ abstract class AbstractStateOfJpa310Test {
   private LocalTime getCurrentTime() {
     LocalTime now = LocalTime.now();
     // make sure none of the nano seconds are 0 so that we can detect truncation
-    now = now.withNano(getDefaultNanoSecond());
+    now = now.withNano(this.getDefaultNanoSecond());
     return now.truncatedTo(this.getTimeResolution());
   }
 
@@ -198,7 +216,7 @@ abstract class AbstractStateOfJpa310Test {
   protected OffsetDateTime getCurrentDateTimeInDifferentZone() {
     OffsetDateTime now = OffsetDateTime.now();
     // make sure none of the nano seconds are 0 so that we can detect truncation
-    now = now.withNano(123_456_789);
+    now = now.withNano(this.getDefaultNanoSecond());
     return this.withDifferentOffsetSameInstant(now).truncatedTo(this.getTimeResolution());
   }
 
@@ -224,7 +242,7 @@ abstract class AbstractStateOfJpa310Test {
   }
 
   protected OffsetDateTime getCurrentDateTimeInUtc() {
-    return OffsetDateTime.now(ZoneOffset.UTC).withNano(123_456_789).truncatedTo(this.getTimeResolution());
+    return OffsetDateTime.now(ZoneOffset.UTC).withNano(this.getDefaultNanoSecond()).truncatedTo(this.getTimeResolution());
   }
 
   protected TemporalUnit getTimeResolution() {
@@ -246,7 +264,7 @@ abstract class AbstractStateOfJpa310Test {
     Duration gap = Duration.between(transition.getDateTimeBefore(), transition.getDateTimeAfter());
     LocalDateTime unstorable = transition.getDateTimeBefore().plus(gap.dividedBy(2L));
     // make sure none of the nano seconds are 0 so that we can detect truncation
-    return unstorable.withNano(123_456_789).truncatedTo(this.getTimeResolution());
+    return unstorable.withNano(this.getDefaultNanoSecond()).truncatedTo(this.getTimeResolution());
   }
 
 }

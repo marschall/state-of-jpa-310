@@ -12,9 +12,9 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 @Configuration
 public class DerbyConfiguration {
-  
+
   private static final AtomicInteger COUNT = new AtomicInteger();
-  
+
   @Bean
   public DataSource dataSource() {
     return new EmbeddedDatabaseBuilder()
@@ -25,7 +25,6 @@ public class DerbyConfiguration {
         .setName("Derby-" + COUNT.incrementAndGet())
         .setType(DERBY)
         .addScript("derby-schema.sql")
-        .addScript("derby-data.sql")
         .build();
   }
 
