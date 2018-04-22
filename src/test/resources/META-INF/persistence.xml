@@ -2,7 +2,7 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_2.xsd">
 
-  <persistence-unit name="state-of-jpa-310-hibernate-derby">
+  <persistence-unit name="state-of-jpa-310-hibernate-derby" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -16,7 +16,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-hibernate-h2">
+  <persistence-unit name="state-of-jpa-310-hibernate-h2" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -30,7 +30,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-hibernate-hsql">
+  <persistence-unit name="state-of-jpa-310-hibernate-hsql" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -44,7 +44,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-hibernate-postgres">
+  <persistence-unit name="state-of-jpa-310-hibernate-postgres" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -58,7 +58,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-hibernate-sqlserver">
+  <persistence-unit name="state-of-jpa-310-hibernate-sqlserver" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -72,7 +72,21 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-hibernate-mysql">
+  <persistence-unit name="state-of-jpa-310-hibernate-mariadb" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDB53Dialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-mysql" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -86,7 +100,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-hibernate-oracle">
+  <persistence-unit name="state-of-jpa-310-hibernate-oracle" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -100,7 +114,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-derby">
+  <persistence-unit name="state-of-jpa-310-eclipselink-derby" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -116,7 +130,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-h2">
+  <persistence-unit name="state-of-jpa-310-eclipselink-h2" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -132,7 +146,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-hsql">
+  <persistence-unit name="state-of-jpa-310-eclipselink-hsql" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -148,7 +162,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-postgres">
+  <persistence-unit name="state-of-jpa-310-eclipselink-postgres" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -164,7 +178,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-sqlserver">
+  <persistence-unit name="state-of-jpa-310-eclipselink-sqlserver" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -180,7 +194,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-mysql">
+  <persistence-unit name="state-of-jpa-310-eclipselink-mysql" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
@@ -196,7 +210,7 @@
     </properties>
   </persistence-unit>
 
-  <persistence-unit name="state-of-jpa-310-eclipselink-oracle">
+  <persistence-unit name="state-of-jpa-310-eclipselink-oracle" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
