@@ -1,5 +1,7 @@
 package com.github.marschall.stateofjpa310;
 
+import static com.github.marschall.stateofjpa310.Constants.PERSISTENCE_UNIT_NAME;
+import static java.util.Collections.singletonMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,12 +18,60 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.time.zone.ZoneOffsetTransition;
 import java.time.zone.ZoneRules;
+import java.util.Map;
 
 import org.assertj.core.api.AssertionsForInterfaceTypes;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.MutablePropertySources;
+
+import com.github.marschall.stateofjpa310.configuration.TransactionManagerConfiguration;
 
 abstract class AbstractStateOfJpa310Test {
+
+  private AnnotationConfigApplicationContext applicationContext;
+
+  @BeforeEach
+  void setUp() {
+    this.applicationContext = new AnnotationConfigApplicationContext();
+    this.applicationContext.register(this.getDataSourceConfiguration(), TransactionManagerConfiguration.class, this.getJapConfiguration());
+    ConfigurableEnvironment environment = this.applicationContext.getEnvironment();
+    MutablePropertySources propertySources = environment.getPropertySources();
+    Map<String, Object> source = singletonMap(PERSISTENCE_UNIT_NAME, this.getPersistenceUnitName());
+    propertySources.addFirst(new MapPropertySource("persistence unit name", source));
+    this.applicationContext.refresh();
+
+//    PlatformTransactionManager txManager = this.applicationContext.getBean(PlatformTransactionManager.class);
+//    this.template = new TransactionTemplate(txManager);
+//
+//    this.template.execute(status -> {
+//      Map<String, DatabasePopulator> beans = this.applicationContext.getBeansOfType(DatabasePopulator.class);
+//      DataSource dataSource = this.applicationContext.getBean(DataSource.class);
+//      try (Connection connection = dataSource.getConnection()) {
+//        for (DatabasePopulator populator : beans.values()) {
+//          populator.populate(connection);
+//        }
+//      } catch (SQLException e) {
+//        throw new RuntimeException("could initialize database", e);
+//      }
+//      return null;
+//    });
+  }
+
+  @AfterEach
+  void tearDown() {
+    this.applicationContext.close();
+  }
+
+  protected abstract Class<?> getDataSourceConfiguration();
+
+  protected abstract Class<?> getJapConfiguration();
+
 
   protected abstract String getPersistenceUnitName();
 
