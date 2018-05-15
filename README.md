@@ -1,5 +1,5 @@
-State of JPA JSR-310
-====================
+State of JSR-310 Support in JPA
+===============================
 
 This project contains of tests for the state of JSR-310 support in JPA 2.2 providers.
 
