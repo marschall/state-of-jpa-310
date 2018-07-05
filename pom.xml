@@ -141,7 +141,7 @@
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-      <version>2.4.0</version>
+      <version>2.4.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -159,7 +159,7 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>2.18.0</version>
+      <version>2.19.0</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -183,7 +183,7 @@
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
-      <version>2.2.3</version>
+      <version>2.2.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -227,7 +227,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.9.1</version>
+      <version>3.10.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -481,10 +481,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <spring.version>5.0.6.RELEASE</spring.version>
+    <spring.version>5.0.7.RELEASE</spring.version>
     <log4j.version>2.11.0</log4j.version>
-    <hibernate.version>5.3.0.Final</hibernate.version>
-    <eclipselink.version>2.7.1</eclipselink.version>
+    <hibernate.version>5.3.1.Final</hibernate.version>
+    <eclipselink.version>2.7.2</eclipselink.version>
     <junit.jupiter.version>5.2.0</junit.jupiter.version>
     <junit.platform.version>1.2.0</junit.platform.version>
   </properties>
