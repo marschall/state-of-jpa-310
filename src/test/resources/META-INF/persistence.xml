@@ -226,4 +226,148 @@
     </properties>
   </persistence-unit>
 
+  <persistence-unit name="state-of-jpa-310-openjpa-derby" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.DerbyDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-h2" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.H2Dictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-hsql" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.HSQLDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-postgres" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.PostgresDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-sqlserver" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.SQLServerDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-mariadb" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.MariaDBDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-mysql" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.MySQLDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-oracle" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.OracleDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
 </persistence>
