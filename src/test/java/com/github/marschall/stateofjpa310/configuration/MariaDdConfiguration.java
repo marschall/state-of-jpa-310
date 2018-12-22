@@ -10,7 +10,7 @@ import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 @Configuration
-public class MariaDBConfiguration {
+public class MariaDdConfiguration {
 
   @Bean
   public DataSource dataSource() {
