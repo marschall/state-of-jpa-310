@@ -1,6 +1,5 @@
 package com.github.marschall.stateofjpa310;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -10,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "JPA_LOCAL_DATE_TIME")
-public class JpaLocalDateTime implements Serializable {
+public class JpaLocalDateTime {
 
   @Id
   @Column(name = "ID")

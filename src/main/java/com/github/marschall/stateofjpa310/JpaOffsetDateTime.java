@@ -1,6 +1,5 @@
 package com.github.marschall.stateofjpa310;
 
-import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
@@ -10,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "JPA_OFFSET_DATE_TIME")
-public class JpaOffsetDateTime implements Serializable {
+public class JpaOffsetDateTime {
 
   @Id
   @Column(name = "ID")
