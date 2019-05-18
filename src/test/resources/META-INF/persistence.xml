@@ -7,12 +7,24 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-hibernate-firebird" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.FirebirdDialect" />
     </properties>
   </persistence-unit>
 
@@ -130,6 +142,21 @@
     </properties>
   </persistence-unit>
 
+  <persistence-unit name="state-of-jpa-310-eclipselink-firebird" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.FirebirdPlatform" />
+      <property name="eclipselink.weaving" value="false" />
+      <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+    </properties>
+  </persistence-unit>
+
   <persistence-unit name="state-of-jpa-310-eclipselink-h2" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
@@ -231,12 +258,28 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
       <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.DerbyDictionary" />
+      <property name="openjpa.jdbc.QuerySQLCache" value="false" />
+      <property name="penjpa.DataCache" value="false" />
+      <property name="openjpa.Log" value="slf4j" />
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    </properties>
+  </persistence-unit>
+
+  <persistence-unit name="state-of-jpa-310-openjpa-firebird" transaction-type="RESOURCE_LOCAL">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+    <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.FirebirdDictionary" />
       <property name="openjpa.jdbc.QuerySQLCache" value="false" />
       <property name="penjpa.DataCache" value="false" />
       <property name="openjpa.Log" value="slf4j" />
