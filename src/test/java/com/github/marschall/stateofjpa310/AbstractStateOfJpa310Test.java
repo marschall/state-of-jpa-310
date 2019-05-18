@@ -146,7 +146,6 @@ abstract class AbstractStateOfJpa310Test {
     this.txTemplate.execute((status) -> {
       EntityManager entityManager = EntityManagerFactoryUtils.getTransactionalEntityManager(this.factory);
       entityManager.persist(entity);
-      status.flush();
       return null;
     });
   }

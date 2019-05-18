@@ -16,5 +16,6 @@ Accommodations have been made for the following database limitations:
  * PostgreS, MySQL, and MariaDB only supports microsecond resolution.
  * MySQL, MariaDB and Derby do not support TIMESTAMP WITH TIME ZONE.
  * SQL Server only supports 100 nanosecond resolution.
+ * Firebird only supports 100 microsecond resolution.
 
  

@@ -89,7 +89,6 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 
@@ -103,7 +102,6 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 
@@ -226,7 +224,6 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 
@@ -364,7 +361,6 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 
@@ -382,7 +378,6 @@
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
 

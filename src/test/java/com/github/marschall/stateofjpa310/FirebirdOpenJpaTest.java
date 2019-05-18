@@ -1,9 +1,21 @@
 package com.github.marschall.stateofjpa310;
 
+import java.time.temporal.TemporalUnit;
+
 import com.github.marschall.stateofjpa310.configuration.FirebirdConfiguration;
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
 class FirebirdOpenJpaTest extends AbstractStateOfJpa310Test {
+
+  @Override
+  protected int getDefaultNanoSecond() {
+    return 123_400_000;
+  }
+
+  @Override
+  protected TemporalUnit getTimeResolution() {
+    return HundredMicroseconds.INSTANCE;
+  }
 
   @Override
   protected boolean offsetDateTimeSupported() {
