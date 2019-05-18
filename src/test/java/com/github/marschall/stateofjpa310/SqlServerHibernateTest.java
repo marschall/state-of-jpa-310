@@ -3,7 +3,7 @@ package com.github.marschall.stateofjpa310;
 import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
 import com.github.marschall.stateofjpa310.configuration.SqlServerConfiguration;
 
-class SqlServerHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class SqlServerHibernateTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected int getDefaultNanoSecond() {

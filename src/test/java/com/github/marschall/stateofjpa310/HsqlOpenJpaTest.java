@@ -1,23 +1,18 @@
 package com.github.marschall.stateofjpa310;
 
+import com.github.marschall.stateofjpa310.configuration.HsqlConfiguration;
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
-import com.github.marschall.stateofjpa310.configuration.SqlServerConfiguration;
 
-class SqlServerOpenJpaStateOfJpa310Test extends AbstractStateOfJpa310Test {
-
-  @Override
-  protected int getDefaultNanoSecond() {
-    return 123_456_700;
-  }
+class HsqlOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-openjpa-sqlserver";
+    return "state-of-jpa-310-openjpa-hsql";
   }
 
   @Override
   protected Class<?> getDataSourceConfiguration() {
-    return SqlServerConfiguration.class;
+    return HsqlConfiguration.class;
   }
 
   @Override

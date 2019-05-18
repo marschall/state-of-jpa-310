@@ -1,7 +1,10 @@
 package com.github.marschall.stateofjpa310.configuration;
 
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -14,6 +17,13 @@ public class SqlServerConfiguration {
 
   @Bean
   public DataSource dataSource() {
+    try {
+      if (!com.microsoft.sqlserver.jdbc.SQLServerDriver.isRegistered()) {
+        com.microsoft.sqlserver.jdbc.SQLServerDriver.register();
+      }
+    } catch (SQLException e) {
+      throw new BeanCreationException("could not register driver", e);
+    }
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
     dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=master");

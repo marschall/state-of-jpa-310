@@ -4,10 +4,10 @@ import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
-import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
+import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
 import com.github.marschall.stateofjpa310.configuration.PostgresConfiguration;
 
-class PostgresEclipseLinkStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class PostgresHibernateTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected TemporalUnit getTimeResolution() {
@@ -21,7 +21,7 @@ class PostgresEclipseLinkStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-eclipselink-postgres";
+    return "state-of-jpa-310-hibernate-postgres";
   }
 
   @Override
@@ -31,7 +31,7 @@ class PostgresEclipseLinkStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected Class<?> getJapConfiguration() {
-    return EclipseLinkConfiguration.class;
+    return HibernateConfiguration.class;
   }
 
 }

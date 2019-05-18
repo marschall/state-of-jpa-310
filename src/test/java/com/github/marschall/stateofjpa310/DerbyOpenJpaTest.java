@@ -3,7 +3,7 @@ package com.github.marschall.stateofjpa310;
 import com.github.marschall.stateofjpa310.configuration.DerbyConfiguration;
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
-class DerbyOpenJpaStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class DerbyOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected boolean offsetDateTimeSupported() {

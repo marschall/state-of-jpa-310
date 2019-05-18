@@ -1,9 +1,17 @@
 package com.github.marschall.stateofjpa310;
 
-import com.github.marschall.stateofjpa310.configuration.DerbyConfiguration;
-import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 
-class DerbyHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
+import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
+import com.github.marschall.stateofjpa310.configuration.MysqlConfiguration;
+
+class MysqlHibernateTest extends AbstractStateOfJpa310Test {
+
+  @Override
+  protected TemporalUnit getTimeResolution() {
+    return ChronoUnit.MICROS;
+  }
 
   @Override
   protected boolean offsetDateTimeSupported() {
@@ -12,12 +20,12 @@ class DerbyHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-hibernate-derby";
+    return "state-of-jpa-310-hibernate-mysql";
   }
 
   @Override
   protected Class<?> getDataSourceConfiguration() {
-    return DerbyConfiguration.class;
+    return MysqlConfiguration.class;
   }
 
   @Override

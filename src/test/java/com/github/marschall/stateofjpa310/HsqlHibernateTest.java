@@ -3,7 +3,7 @@ package com.github.marschall.stateofjpa310;
 import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
 import com.github.marschall.stateofjpa310.configuration.HsqlConfiguration;
 
-class HsqlHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class HsqlHibernateTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {

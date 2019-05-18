@@ -6,7 +6,7 @@ import java.time.temporal.TemporalUnit;
 import com.github.marschall.stateofjpa310.configuration.MariaDdConfiguration;
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
-class MariaDbOpenJpaStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class MariaDbOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected TemporalUnit getTimeResolution() {

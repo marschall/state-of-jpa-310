@@ -2,6 +2,7 @@ package com.github.marschall.stateofjpa310.configuration;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -16,6 +17,11 @@ public class MysqlConfiguration {
 
   @Bean
   public DataSource dataSource() {
+    try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+      throw new BeanCreationException("mariadb driver not present", e);
+    }
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
     String userName = System.getProperty("user.name");

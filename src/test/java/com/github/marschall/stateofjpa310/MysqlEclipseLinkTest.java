@@ -3,10 +3,10 @@ package com.github.marschall.stateofjpa310;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
-import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
-import com.github.marschall.stateofjpa310.configuration.MariaDdConfiguration;
+import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
+import com.github.marschall.stateofjpa310.configuration.MysqlConfiguration;
 
-class MariaDbHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class MysqlEclipseLinkTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected TemporalUnit getTimeResolution() {
@@ -20,17 +20,17 @@ class MariaDbHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-hibernate-mariadb";
+    return "state-of-jpa-310-eclipselink-mysql";
   }
 
   @Override
   protected Class<?> getDataSourceConfiguration() {
-    return MariaDdConfiguration.class;
+    return MysqlConfiguration.class;
   }
 
   @Override
   protected Class<?> getJapConfiguration() {
-    return HibernateConfiguration.class;
+    return EclipseLinkConfiguration.class;
   }
 
 }

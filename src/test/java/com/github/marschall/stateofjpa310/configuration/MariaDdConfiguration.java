@@ -2,6 +2,7 @@ package com.github.marschall.stateofjpa310.configuration;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -14,6 +15,11 @@ public class MariaDdConfiguration {
 
   @Bean
   public DataSource dataSource() {
+    try {
+      Class.forName("org.mariadb.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+      throw new BeanCreationException("mariadb driver not present", e);
+    }
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
     // https://mariadb.com/kb/en/mariadb/about-mariadb-connector-j/

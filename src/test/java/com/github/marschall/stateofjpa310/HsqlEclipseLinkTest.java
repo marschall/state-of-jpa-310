@@ -3,7 +3,7 @@ package com.github.marschall.stateofjpa310;
 import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
 import com.github.marschall.stateofjpa310.configuration.HsqlConfiguration;
 
-class HsqlEclipseLinkStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class HsqlEclipseLinkTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {

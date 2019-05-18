@@ -3,10 +3,10 @@ package com.github.marschall.stateofjpa310;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
-import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
 import com.github.marschall.stateofjpa310.configuration.MysqlConfiguration;
+import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
-class MysqlHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class MysqlOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected TemporalUnit getTimeResolution() {
@@ -20,7 +20,7 @@ class MysqlHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-hibernate-mysql";
+    return "state-of-jpa-310-openjpa-mysql";
   }
 
   @Override
@@ -30,7 +30,7 @@ class MysqlHibernateStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected Class<?> getJapConfiguration() {
-    return HibernateConfiguration.class;
+    return OpenJpaConfiguration.class;
   }
 
 }

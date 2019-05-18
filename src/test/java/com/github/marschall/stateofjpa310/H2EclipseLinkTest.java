@@ -1,13 +1,13 @@
 package com.github.marschall.stateofjpa310;
 
+import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
 import com.github.marschall.stateofjpa310.configuration.H2Configuration;
-import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
-class H2OpenJpaStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class H2EclipseLinkTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-openjpa-h2";
+    return "state-of-jpa-310-eclipselink-h2";
   }
 
   @Override
@@ -17,7 +17,7 @@ class H2OpenJpaStateOfJpa310Test extends AbstractStateOfJpa310Test {
 
   @Override
   protected Class<?> getJapConfiguration() {
-    return OpenJpaConfiguration.class;
+    return EclipseLinkConfiguration.class;
   }
 
 }

@@ -3,7 +3,7 @@ package com.github.marschall.stateofjpa310;
 import com.github.marschall.stateofjpa310.configuration.DerbyConfiguration;
 import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
 
-class DerbyEclipseLinkStateOfJpa310Test extends AbstractStateOfJpa310Test {
+class DerbyEclipseLinkTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected boolean offsetDateTimeSupported() {
