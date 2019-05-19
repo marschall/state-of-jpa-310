@@ -18,4 +18,4 @@ Accommodations have been made for the following database limitations:
  * SQL Server only supports 100 nanosecond resolution.
  * Firebird only supports 100 microsecond resolution.
 
- 
+The only combination currently passing is H2 on OpenJPA.
