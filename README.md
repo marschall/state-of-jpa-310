@@ -14,6 +14,7 @@ The 2nd level cache has been disabled to make sure entity are actually read from
 Accommodations have been made for the following database limitations:
 
  * PostgreS, MySQL, and MariaDB only supports microsecond resolution.
+ * PostgreS converts time zones to UTC when storing.
  * MySQL, MariaDB, Derby and Firebird do not support TIMESTAMP WITH TIME ZONE.
  * SQL Server only supports 100 nanosecond resolution.
  * Firebird only supports 100 microsecond resolution.
