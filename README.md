@@ -19,4 +19,22 @@ Accommodations have been made for the following database limitations:
  * SQL Server only supports 100 nanosecond resolution.
  * Firebird only supports 100 microsecond resolution.
 
+The following databases are tested:
+
+ * Derby
+ * Firebird
+ * H2
+ * HSQLDB
+ * MariaDB
+ * MySQL
+ * PostgreS
+ * SQL Server
+
+The following JPA providers are tested:
+
+ * EclipseLink
+ * Hibernate
+ * OpenJPA
+
 The only combination currently passing is H2 on OpenJPA.
+
