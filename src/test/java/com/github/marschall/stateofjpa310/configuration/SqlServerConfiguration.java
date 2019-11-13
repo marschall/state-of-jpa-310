@@ -26,7 +26,8 @@ public class SqlServerConfiguration {
     }
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
-    dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=master");
+    // https://github.com/microsoft/mssql-jdbc/issues/1182
+    dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=master;sendTimeAsDatetime=false");
     dataSource.setUsername("sa");
     dataSource.setPassword("Cent-Quick-Space-Bath-8");
     return dataSource;
