@@ -125,12 +125,17 @@ abstract class AbstractStateOfJpa310Test {
     assertEquals(originalEntity.getOffsetDateTime(), readBack.getOffsetDateTime(), "OffsetDateTime");
   }
 
+  protected boolean timeSupported() {
+    return true;
+  }
+
   protected boolean offsetDateTimeSupported() {
     return true;
   }
 
   @Test
   void stateOfJpaJsr310SupportLocalTime() {
+    assumeTrue(this.timeSupported());
 
     JpaLocalTime originalEntity = this.newJpaLocalTime();
     this.persistEntity(originalEntity);

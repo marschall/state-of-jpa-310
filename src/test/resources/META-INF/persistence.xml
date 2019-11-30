@@ -114,7 +114,6 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
     <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
@@ -128,7 +127,6 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
     <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
@@ -394,7 +392,6 @@
     <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
-    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
     <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
     <shared-cache-mode>NONE</shared-cache-mode>
