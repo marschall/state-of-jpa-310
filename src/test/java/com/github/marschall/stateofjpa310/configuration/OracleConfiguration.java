@@ -11,11 +11,13 @@ public class OracleConfiguration {
 
   @Bean
   public DataSource dataSource() {
+    // oracle.jdbc.OracleDriver
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
-    dataSource.setUrl("");
-    dataSource.setUsername("scott");
-    dataSource.setPassword("tiger");
+//  dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:ORCLCDB");
+    dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/ORCLPDB1");
+    dataSource.setUsername("c##jdbc");
+    dataSource.setPassword("Cent-Quick-Space-Bath-8");
     return dataSource;
   }
 
