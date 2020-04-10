@@ -106,7 +106,7 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
     </properties>
   </persistence-unit>
 
