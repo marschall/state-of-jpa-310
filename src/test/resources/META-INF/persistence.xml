@@ -126,6 +126,7 @@
   <persistence-unit name="state-of-jpa-310-eclipselink-derby" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
+    <class>com.github.marschall.stateofjpa310.JpaLocalTime</class>
     <class>com.github.marschall.stateofjpa310.JpaLocalDateTime</class>
     <class>com.github.marschall.stateofjpa310.JpaOffsetDateTime</class>
 
