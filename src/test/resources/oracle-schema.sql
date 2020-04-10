@@ -1,0 +1,43 @@
+
+
+DECLARE
+  l_table_count NUMBER(1);
+BEGIN
+
+  SELECT COUNT(*)
+    INTO l_table_count
+    FROM user_tables
+   WHERE table_name = 'JPA_LOCAL_DATE_TIME';
+
+  IF l_table_count > 0 THEN
+    EXECUTE IMMEDIATE 'DROP TABLE JPA_LOCAL_DATE_TIME';
+  END IF;
+END;!!
+
+DECLARE
+  l_table_count NUMBER(1);
+BEGIN
+
+  SELECT COUNT(*)
+    INTO l_table_count
+    FROM user_tables
+   WHERE table_name = 'JPA_OFFSET_DATE_TIME';
+
+  IF l_table_count > 0 THEN
+    EXECUTE IMMEDIATE 'DROP TABLE JPA_OFFSET_DATE_TIME';
+  END IF;
+END;!!
+
+CREATE TABLE JPA_LOCAL_DATE_TIME (
+  ID NUMBER(8) NOT NULL,
+  LOCAL_DATE_TIME TIMESTAMP(9),
+  PRIMARY KEY (ID)
+)!!
+
+CREATE TABLE JPA_OFFSET_DATE_TIME (
+  ID NUMBER(8) NOT NULL,
+  OFFSET_DATE_TIME TIMESTAMP(9) WITH TIME ZONE,
+  PRIMARY KEY (ID)
+)!!
+
+

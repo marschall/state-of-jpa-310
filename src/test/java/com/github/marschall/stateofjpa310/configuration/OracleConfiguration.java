@@ -1,5 +1,7 @@
 package com.github.marschall.stateofjpa310.configuration;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -14,20 +16,25 @@ public class OracleConfiguration {
 
   @Bean
   public DataSource dataSource() {
-    // oracle.jdbc.OracleDriver
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
-    // dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:ORCLCDB");
     dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/ORCLPDB1");
-    dataSource.setUsername("c##jdbc");
+    dataSource.setUsername("jdbc");
     dataSource.setPassword("Cent-Quick-Space-Bath-8");
+    Properties connectionProperties = new Properties();
+    connectionProperties.put("oracle.net.disableOob", "true");
+    dataSource.setConnectionProperties(connectionProperties);
     return dataSource;
   }
 
   @Bean
   public DatabasePopulator databasePopulator() {
-    return new ResourceDatabasePopulator(
-            new ClassPathResource("oracle/04_data.sql"));
+
+    ResourceDatabasePopulator populator = new ResourceDatabasePopulator(
+            new ClassPathResource("oracle-schema.sql"));
+    populator.setSeparator("!!");
+
+    return populator;
   }
 
 }
