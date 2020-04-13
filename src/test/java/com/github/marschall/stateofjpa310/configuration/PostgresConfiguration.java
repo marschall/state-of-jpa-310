@@ -27,10 +27,11 @@ public class PostgresConfiguration {
     SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
     dataSource.setSuppressClose(true);
     String userName = System.getProperty("user.name");
-    // defaults from Postgres.app
     dataSource.setUrl("jdbc:postgresql:" + userName);
     dataSource.setUsername(userName);
-    dataSource.setPassword("");
+
+    String password = "Cent-Quick-Space-Bath-8";
+    dataSource.setPassword(password);
     return dataSource;
   }
 
