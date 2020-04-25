@@ -11,6 +11,7 @@ The following databases are tested:
  * HSQLDB
  * MariaDB
  * MySQL
+ * Oracle
  * PostgreS
  * SQL Server
 
