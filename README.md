@@ -5,6 +5,7 @@ This project contains of tests for the state of JSR-310 support in JPA 2.2 provi
 
 The following databases are tested:
 
+ * DB2
  * Derby
  * Firebird
  * H2

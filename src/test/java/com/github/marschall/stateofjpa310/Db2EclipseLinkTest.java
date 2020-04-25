@@ -3,34 +3,28 @@ package com.github.marschall.stateofjpa310;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
+import com.github.marschall.stateofjpa310.configuration.Db2Configuration;
 import com.github.marschall.stateofjpa310.configuration.EclipseLinkConfiguration;
-import com.github.marschall.stateofjpa310.configuration.MysqlConfiguration;
 
-class MysqlEclipseLinkTest extends AbstractStateOfJpa310Test {
-
-  @Override
-  protected TemporalUnit getTimestampResolution() {
-    return ChronoUnit.MICROS;
-  }
-
-  @Override
-  protected TemporalUnit getTimeResolution() {
-    return ChronoUnit.MICROS;
-  }
+class Db2EclipseLinkTest extends AbstractStateOfJpa310Test {
 
   @Override
   protected boolean offsetDateTimeSupported() {
     return false;
   }
+  @Override
+  protected TemporalUnit getTimeResolution() {
+    return ChronoUnit.SECONDS;
+  }
 
   @Override
   protected String getPersistenceUnitName() {
-    return "state-of-jpa-310-eclipselink-mysql";
+    return "state-of-jpa-310-eclipselink-db2";
   }
 
   @Override
   protected Class<?> getDataSourceConfiguration() {
-    return MysqlConfiguration.class;
+    return Db2Configuration.class;
   }
 
   @Override

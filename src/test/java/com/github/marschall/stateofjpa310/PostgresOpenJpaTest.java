@@ -10,6 +10,11 @@ import com.github.marschall.stateofjpa310.configuration.PostgresConfiguration;
 class PostgresOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
+  protected TemporalUnit getTimestampResolution() {
+    return ChronoUnit.MICROS;
+  }
+
+  @Override
   protected TemporalUnit getTimeResolution() {
     return ChronoUnit.MICROS;
   }

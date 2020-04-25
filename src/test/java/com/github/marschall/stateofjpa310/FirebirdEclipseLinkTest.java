@@ -13,6 +13,11 @@ class FirebirdEclipseLinkTest extends AbstractStateOfJpa310Test {
   }
 
   @Override
+  protected TemporalUnit getTimestampResolution() {
+    return HundredMicroseconds.INSTANCE;
+  }
+
+  @Override
   protected TemporalUnit getTimeResolution() {
     return HundredMicroseconds.INSTANCE;
   }

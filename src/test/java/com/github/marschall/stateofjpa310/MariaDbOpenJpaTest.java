@@ -9,6 +9,11 @@ import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 class MariaDbOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
+  protected TemporalUnit getTimestampResolution() {
+    return ChronoUnit.MICROS;
+  }
+
+  @Override
   protected TemporalUnit getTimeResolution() {
     return ChronoUnit.MICROS;
   }

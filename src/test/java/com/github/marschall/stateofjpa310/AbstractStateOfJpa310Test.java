@@ -221,7 +221,7 @@ abstract class AbstractStateOfJpa310Test {
     OffsetDateTime now = OffsetDateTime.now();
     // make sure none of the nano seconds are 0 so that we can detect truncation
     now = now.withNano(this.getDefaultNanoSecond());
-    return this.withDifferentOffsetSameInstant(now).truncatedTo(this.getTimeResolution());
+    return this.withDifferentOffsetSameInstant(now).truncatedTo(this.getTimestampResolution());
   }
 
 
@@ -246,7 +246,11 @@ abstract class AbstractStateOfJpa310Test {
   }
 
   protected OffsetDateTime getCurrentDateTimeInUtc() {
-    return OffsetDateTime.now(ZoneOffset.UTC).withNano(this.getDefaultNanoSecond()).truncatedTo(this.getTimeResolution());
+    return OffsetDateTime.now(ZoneOffset.UTC).withNano(this.getDefaultNanoSecond()).truncatedTo(this.getTimestampResolution());
+  }
+
+  protected TemporalUnit getTimestampResolution() {
+    return ChronoUnit.NANOS;
   }
 
   protected TemporalUnit getTimeResolution() {
@@ -268,7 +272,7 @@ abstract class AbstractStateOfJpa310Test {
     Duration gap = Duration.between(transition.getDateTimeBefore(), transition.getDateTimeAfter());
     LocalDateTime unstorable = transition.getDateTimeBefore().plus(gap.dividedBy(2L));
     // make sure none of the nano seconds are 0 so that we can detect truncation
-    return unstorable.withNano(this.getDefaultNanoSecond()).truncatedTo(this.getTimeResolution());
+    return unstorable.withNano(this.getDefaultNanoSecond()).truncatedTo(this.getTimestampResolution());
   }
 
 }

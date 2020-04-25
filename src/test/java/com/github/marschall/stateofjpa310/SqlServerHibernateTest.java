@@ -13,6 +13,11 @@ class SqlServerHibernateTest extends AbstractStateOfJpa310Test {
   }
 
   @Override
+  protected TemporalUnit getTimestampResolution() {
+    return HundredNanoseconds.INSTANCE;
+  }
+
+  @Override
   protected TemporalUnit getTimeResolution() {
     return HundredNanoseconds.INSTANCE;
   }
