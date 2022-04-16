@@ -14,18 +14,9 @@
   * limitations under the License.
   */
 package com.github.marschall.stateofjpa310.configuration.openjpa;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.spi.PersistenceProvider;
-
-import org.apache.openjpa.persistence.OpenJPAEntityManagerFactorySPI;
-import org.apache.openjpa.persistence.OpenJPAEntityManagerSPI;
-import org.apache.openjpa.persistence.PersistenceProviderImpl;
 import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
-import org.springframework.orm.jpa.vendor.Database;
+
+import jakarta.persistence.spi.PersistenceProvider;
 
  /**
   * {@link org.springframework.orm.jpa.JpaVendorAdapter} implementation for Apache OpenJPA.
@@ -46,7 +37,8 @@ import org.springframework.orm.jpa.vendor.Database;
   */
  public class OpenJpaVendorAdapter extends AbstractJpaVendorAdapter {
 
-     private final PersistenceProvider persistenceProvider = new PersistenceProviderImpl();
+//     private final PersistenceProvider persistenceProvider = new PersistenceProviderImpl();
+     private final PersistenceProvider persistenceProvider = null;
 
      private final OpenJpaDialect jpaDialect = new OpenJpaDialect();
 
@@ -55,79 +47,79 @@ import org.springframework.orm.jpa.vendor.Database;
          return this.persistenceProvider;
      }
 
-     @Override
-     public String getPersistenceProviderRootPackage() {
-         return "org.apache.openjpa";
-     }
-
-     @Override
-     public Map<String, Object> getJpaPropertyMap() {
-         Map<String, Object> jpaProperties = new HashMap<>();
-
-         if (this.getDatabasePlatform() != null) {
-             jpaProperties.put("openjpa.jdbc.DBDictionary", this.getDatabasePlatform());
-         } else if (this.getDatabase() != null) {
-             String databaseDictonary = this.determineDatabaseDictionary(this.getDatabase());
-             if (databaseDictonary != null) {
-                 jpaProperties.put("openjpa.jdbc.DBDictionary", databaseDictonary);
-             }
-         }
-
-         if (this.isGenerateDdl()) {
-             jpaProperties.put("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
-         }
-         if (this.isShowSql()) {
-             // Taken from the OpenJPA 0.9.6 docs ("Standard OpenJPA Log Configuration + All SQL Statements")
-             jpaProperties.put("openjpa.Log", "DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE");
-         }
-
-         return jpaProperties;
-     }
-
-     /**
-      * Determine the OpenJPA database dictionary name for the given database.
-      *
-      * @param database the specified database
-      * @return the OpenJPA database dictionary name, or {@code null} if none found
-      */
-     protected String determineDatabaseDictionary(final Database database) {
-         switch (database) {
-             case DB2:
-                 return "db2";
-             case DERBY:
-                 return "derby";
-             case HSQL:
-                 return "hsql(SimulateLocking=true)";
-             case INFORMIX:
-                 return "informix";
-             case MYSQL:
-                 return "mysql";
-             case ORACLE:
-                 return "oracle";
-             case POSTGRESQL:
-                 return "postgres";
-             case SQL_SERVER:
-                 return "sqlserver";
-             case SYBASE:
-                 return "sybase";
-             default:
-                 return null;
-         }
-     }
-
-     @Override
-     public OpenJpaDialect getJpaDialect() {
-         return this.jpaDialect;
-     }
-
-     @Override
-     public Class<? extends EntityManagerFactory> getEntityManagerFactoryInterface() {
-         return OpenJPAEntityManagerFactorySPI.class;
-     }
-
-     @Override
-     public Class<? extends EntityManager> getEntityManagerInterface() {
-         return OpenJPAEntityManagerSPI.class;
-     }
+//     @Override
+//     public String getPersistenceProviderRootPackage() {
+//         return "org.apache.openjpa";
+//     }
+//
+//     @Override
+//     public Map<String, Object> getJpaPropertyMap() {
+//         Map<String, Object> jpaProperties = new HashMap<>();
+//
+//         if (this.getDatabasePlatform() != null) {
+//             jpaProperties.put("openjpa.jdbc.DBDictionary", this.getDatabasePlatform());
+//         } else if (this.getDatabase() != null) {
+//             String databaseDictonary = this.determineDatabaseDictionary(this.getDatabase());
+//             if (databaseDictonary != null) {
+//                 jpaProperties.put("openjpa.jdbc.DBDictionary", databaseDictonary);
+//             }
+//         }
+//
+//         if (this.isGenerateDdl()) {
+//             jpaProperties.put("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
+//         }
+//         if (this.isShowSql()) {
+//             // Taken from the OpenJPA 0.9.6 docs ("Standard OpenJPA Log Configuration + All SQL Statements")
+//             jpaProperties.put("openjpa.Log", "DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE");
+//         }
+//
+//         return jpaProperties;
+//     }
+//
+//     /**
+//      * Determine the OpenJPA database dictionary name for the given database.
+//      *
+//      * @param database the specified database
+//      * @return the OpenJPA database dictionary name, or {@code null} if none found
+//      */
+//     protected String determineDatabaseDictionary(final Database database) {
+//         switch (database) {
+//             case DB2:
+//                 return "db2";
+//             case DERBY:
+//                 return "derby";
+//             case HSQL:
+//                 return "hsql(SimulateLocking=true)";
+//             case INFORMIX:
+//                 return "informix";
+//             case MYSQL:
+//                 return "mysql";
+//             case ORACLE:
+//                 return "oracle";
+//             case POSTGRESQL:
+//                 return "postgres";
+//             case SQL_SERVER:
+//                 return "sqlserver";
+//             case SYBASE:
+//                 return "sybase";
+//             default:
+//                 return null;
+//         }
+//     }
+//
+//     @Override
+//     public OpenJpaDialect getJpaDialect() {
+//         return this.jpaDialect;
+//     }
+//
+//     @Override
+//     public Class<? extends EntityManagerFactory> getEntityManagerFactoryInterface() {
+//         return OpenJPAEntityManagerFactorySPI.class;
+//     }
+//
+//     @Override
+//     public Class<? extends EntityManager> getEntityManagerInterface() {
+//         return OpenJPAEntityManagerSPI.class;
+//     }
 
  }

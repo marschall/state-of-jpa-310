@@ -3,9 +3,13 @@ package com.github.marschall.stateofjpa310;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
+import org.junit.jupiter.api.Disabled;
+
 import com.github.marschall.stateofjpa310.configuration.MysqlConfiguration;
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
+
+@Disabled
 class MysqlOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override
