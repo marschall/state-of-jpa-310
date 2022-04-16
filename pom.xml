@@ -293,7 +293,7 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <release>11</release>
+          <release>17</release>
           <annotationProcessorPaths>
             <annotationProcessorPath>
               <groupId>org.hibernate.orm</groupId>
