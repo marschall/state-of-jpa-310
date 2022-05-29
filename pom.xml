@@ -59,7 +59,7 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-framework-bom</artifactId>
-        <version>6.0.0-M3</version>
+        <version>6.0.0-M4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -92,6 +92,12 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>${hibernate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-community-dialects</artifactId>
+      <version>${hibernate.version}</version>
+      <scope>provided</scope>
     </dependency>
     <!-- 
     <dependency>
@@ -209,25 +215,25 @@
     <dependency>
       <groupId>org.firebirdsql.jdbc</groupId>
       <artifactId>jaybird</artifactId>
-      <version>4.0.5.java11</version>
+      <version>4.0.6.java11</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>42.3.4</version>
+      <version>42.3.6</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.28</version>
+      <version>8.0.29</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
-      <version>3.0.4</version>
+      <version>3.0.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -243,7 +249,7 @@
     <dependency>
       <groupId>com.microsoft.sqlserver</groupId>
       <artifactId>mssql-jdbc</artifactId>
-      <version>10.2.0.jre11</version>
+      <version>10.2.1.jre11</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -425,7 +431,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <hibernate.version>6.0.0.Final</hibernate.version>
+    <hibernate.version>6.0.2.Final</hibernate.version>
     <derby.version>10.15.2.0</derby.version>
     <eclipselink.version>3.0.2</eclipselink.version>
   </properties>

@@ -38,7 +38,7 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.FirebirdDialect" />
+      <property name="hibernate.dialect" value="org.hibernate.community.dialect.FirebirdDialect" />
     </properties>
   </persistence-unit>
 
@@ -80,7 +80,7 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
     </properties>
   </persistence-unit>
 
