@@ -2,9 +2,13 @@ package com.github.marschall.stateofjpa310;
 
 import java.time.temporal.TemporalUnit;
 
+import org.junit.jupiter.api.Disabled;
+
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 import com.github.marschall.stateofjpa310.configuration.SqlServerConfiguration;
 
+
+@Disabled
 class SqlServerOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override

@@ -20,12 +20,8 @@ The following JPA providers are tested:
 
  * EclipseLink
  * Hibernate
- * OpenJPA
 
-Currently the following combinations pass:
-
- * H2 on OpenJPA
- * SQL Server on OpenJPA if you add `sendTimeAsDatetime=false` to the driver URL to disable data trunction, see [#1007](https://github.com/microsoft/mssql-jdbc/pull/1007)
+Currently none combinations pass.
 
 Currently the tests focus on three areas:
 

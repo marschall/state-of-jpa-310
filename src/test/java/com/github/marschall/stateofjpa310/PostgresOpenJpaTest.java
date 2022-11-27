@@ -4,9 +4,13 @@ import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
+import org.junit.jupiter.api.Disabled;
+
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 import com.github.marschall.stateofjpa310.configuration.PostgresConfiguration;
 
+
+@Disabled
 class PostgresOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override

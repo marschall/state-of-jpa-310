@@ -1,8 +1,12 @@
 package com.github.marschall.stateofjpa310;
 
+import org.junit.jupiter.api.Disabled;
+
 import com.github.marschall.stateofjpa310.configuration.HsqlConfiguration;
 import com.github.marschall.stateofjpa310.configuration.OpenJpaConfiguration;
 
+
+@Disabled
 class HsqlOpenJpaTest extends AbstractStateOfJpa310Test {
 
   @Override

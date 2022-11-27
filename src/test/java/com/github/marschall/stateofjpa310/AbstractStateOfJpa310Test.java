@@ -24,8 +24,6 @@ import java.time.zone.ZoneOffsetTransition;
 import java.time.zone.ZoneRules;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.assertj.core.api.AssertionsForInterfaceTypes;
@@ -45,6 +43,9 @@ import org.springframework.transaction.support.TransactionOperations;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import com.github.marschall.stateofjpa310.configuration.TransactionManagerConfiguration;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 
 abstract class AbstractStateOfJpa310Test {
 
