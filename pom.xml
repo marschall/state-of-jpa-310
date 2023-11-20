@@ -422,7 +422,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <hibernate.version>6.2.7.Final</hibernate.version>
-    <derby.version>10.16.1.1</derby.version>
+    <derby.version>10.17.1.0</derby.version>
     <eclipselink.version>4.0.2</eclipselink.version>
   </properties>
 
