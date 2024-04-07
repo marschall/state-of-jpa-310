@@ -12,7 +12,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.DB2Dialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -26,7 +25,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -40,7 +38,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.community.dialect.FirebirdDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -55,7 +52,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -70,7 +66,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -85,7 +80,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -100,7 +94,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -114,7 +107,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -128,7 +120,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
@@ -142,7 +133,6 @@
     <shared-cache-mode>NONE</shared-cache-mode>
 
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
       <property name="hibernate.type.prefer_java_type_jdbc_types" value="true" />
     </properties>
   </persistence-unit>
