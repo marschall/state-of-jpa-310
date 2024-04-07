@@ -10,5 +10,5 @@ docker run --name jdbc-mysql \
  -e MYSQL_DATABASE=$USER \
  -p 3306:3306 \
  --mount type=tmpfs,destination=/var/lib/mysql \
- -d mysql:8.1.0 \
+ -d mysql:8.3.0 \
  --log-bin-trust-function-creators=1
