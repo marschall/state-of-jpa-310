@@ -3,12 +3,9 @@ package com.github.marschall.stateofjpa310;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
-import org.junit.jupiter.api.Disabled;
-
 import com.github.marschall.stateofjpa310.configuration.Db2Configuration;
 import com.github.marschall.stateofjpa310.configuration.HibernateConfiguration;
 
-@Disabled
 class Db2HibernateTest extends AbstractStateOfJpa310Test {
 
   @Override

@@ -49,14 +49,14 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-framework-bom</artifactId>
-        <version>6.1.6</version>
+        <version>6.1.7</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.oracle.database.jdbc</groupId>
         <artifactId>ojdbc-bom</artifactId>
-        <version>23.3.0.23.09</version>
+        <version>23.4.0.24.05</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -75,11 +75,6 @@
       <groupId>jakarta.annotation</groupId>
       <artifactId>jakarta.annotation-api</artifactId>
       <version>3.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.data</groupId>
-      <artifactId>jakarta.data-api</artifactId>
-      <version>1.0.0-RC1</version>
     </dependency>
     <dependency>
       <groupId>org.hibernate.orm</groupId>
@@ -207,7 +202,7 @@
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
-      <version>3.3.3</version>
+      <version>3.4.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -281,6 +276,9 @@
               <version>${hibernate.version}</version>
             </annotationProcessorPath>
           </annotationProcessorPaths>
+          <compilerArgs>
+            <arg>-AsuppressJakartaDataMetamodel=true</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -405,7 +403,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <hibernate.version>6.5.0.Final</hibernate.version>
+    <hibernate.version>6.5.1.Final</hibernate.version>
     <derby.version>10.17.1.0</derby.version>
     <eclipselink.version>4.0.2</eclipselink.version>
   </properties>
